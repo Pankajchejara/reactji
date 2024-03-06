@@ -43,7 +43,7 @@ const ExploreMore = () => {
             courses.map((data,index)=>{
 
 
-                return<Tilt>
+                return<Tilt key={index}>
                     <GlowCapture>
                         <Glow>
                  <div key= {index} className="w-[280px] h-[180px] sm:w-[300px] sm:h-[200px] flex flex-col gap-y-4 shadow-md  glow:bg-cyan-100/20 cursor-pointer shadow-cyan-400">

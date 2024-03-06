@@ -156,14 +156,14 @@ const Navbar = (props) => {
                     <div className='w-full h-[30px] text-center text-white opacity-75 border-b-pure-greys-500 '>Dashobard</div>
                     <div class="boxx transformm w-[100%] flex flex-col  gap-y-3">
                         {
-                            Links.map((link) => (
+                            Links.map((link,index) => (
 
 
                 (link.type == ACCOUNT_TYPE|| link.name == "My Profile" || link.name == "Setting") &&
 
 
                                 <NavLink to={link.path}>
-                                    <div className={`py-[8px] ${matchRoute(link.path) ? "bg-yellow-800 border-l-yellow-100 border-l-[2px] text-yellow-100" : "bg-opacity-0 text-black"} text-center`}>
+                                    <div key={index} className={`py-[8px] ${matchRoute(link.path) ? "bg-yellow-800 border-l-yellow-100 border-l-[2px] text-yellow-100" : "bg-opacity-0 text-black"} text-center`}>
                                         {link.name}
 
                                     </div>
