@@ -56,7 +56,7 @@ useEffect(()=>{
 
 
  <div className='w-11/12 h-full  mx-auto flex flex-col gap-y-9 items-center relative '>
- <div class="flex flex-col w-full justify-center items-center xl:max-w-[900px] py-7 text-center gap-4"><h1 class="text-5xl sm:text-[3.75rem] font-semibold text-white  ">Explore the course to Success with LittleWorld</h1><p class=" text-white text-shark-300 text-base font-normal sm:max-w-[500px]  ">Game, Learn, Define: Where Every Click Unveils a World of Knowledge</p></div>
+ <div className="flex flex-col w-full justify-center items-center xl:max-w-[900px] py-7 text-center gap-4"><h1 className="text-5xl sm:text-[3.75rem] font-semibold text-white  ">Explore the course to Success with LittleWorld</h1><p className=" text-white text-shark-300 text-base font-normal sm:max-w-[500px]  ">Game, Learn, Define: Where Every Click Unveils a World of Knowledge</p></div>
 
 
     
