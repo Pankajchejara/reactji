@@ -22,7 +22,7 @@ const Navbar = (props) => {
    
    
     
-    let ACCOUNT_TYPE = (JSON.parse(localStorage.getItem("signUpData"))).accountType;
+    let ACCOUNT_TYPE = (JSON.parse(localStorage.getItem("signUpData")));
   
     let location = useLocation();
     const matchRoute = (route) => {
@@ -159,7 +159,7 @@ const Navbar = (props) => {
                             Links.map((link,index) => (
 
 
-                (link.type == ACCOUNT_TYPE|| link.name == "My Profile" || link.name == "Setting") &&
+                (link.type == ACCOUNT_TYPE.accountType|| link.name == "My Profile" || link.name == "Setting") &&
 
 
                                 <NavLink to={link.path} key={index}>
