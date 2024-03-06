@@ -61,7 +61,7 @@ function App() {
 <Route path="/Games" element={<Cardgame />}/>
 
 
-<Route path="/Newrepo" element={<Home />}/>
+<Route path="/" element={<Home />}/>
 
 
 
