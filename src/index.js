@@ -8,7 +8,7 @@ import { Toaster } from 'react-hot-toast';
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Appcontextprovider>
-     <BrowserRouter>
+     <BrowserRouter basename="/Newrepo">
     <App />
     <Toaster />
     </BrowserRouter>
