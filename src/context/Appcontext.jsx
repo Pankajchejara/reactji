@@ -1,7 +1,7 @@
 import React, { createContext, useState } from 'react'
 
 export const Appcontext=createContext();
-let secretKey='key'
+
 
 function getlocalitems (){
   let list=( (localStorage.getItem('Enroll')))
@@ -42,7 +42,7 @@ export default function Appcontextprovider ({children}) {
     const[data,setData]=useState('');
     const[signupdata,setSignUpData]=useState([]);
     const[buycourse,setBuyCourse]=useState(getlocalitemslocal());
-    const[submitbutton,setsubmitbutton]=useState(false)
+
     const[editId,setEditId]=useState([]);
     const[mainDataOfCourse,setMainDataOfCourse]=useState(getlocalitems());
     const [img,setImg]=useState(null);
@@ -57,7 +57,7 @@ export default function Appcontextprovider ({children}) {
         data,
         setData,
         img,
-        setImg,signupdata,setSignUpData,submitbutton,setsubmitbutton,
+        setImg,signupdata,setSignUpData,
        
         enroll,setEnroll,mainDataOfCourse,setMainDataOfCourse,editId,setEditId,toggle,settoggle,buycourse,setBuyCourse
     }

@@ -7,7 +7,7 @@ import 'aos/dist/aos.css'
 import {  } from 'n-krypta';
 
 const MyProfile = () => {
-  let secretKey='key'
+ 
   useEffect(()=>{
     AOS.init({duration :1000})
   },[])

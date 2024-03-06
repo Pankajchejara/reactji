@@ -19,12 +19,11 @@ const Navbar = (props) => {
 
     
     let navigate = useNavigate();
-    let secretKey='key'
    
-
-    let ACCOUNT_TYPE = (JSON.parse((localStorage.getItem("signUpData"))));
+   
     
-    let ACCType=(ACCOUNT_TYPE).accountType;
+    let ACCOUNT_TYPE = (JSON.parse(localStorage.getItem("signUpData"))).accountType;
+  
     let location = useLocation();
     const matchRoute = (route) => {
         return matchPath({ path: route }, location.pathname);
@@ -160,7 +159,7 @@ const Navbar = (props) => {
                             Links.map((link) => (
 
 
-                (link.type == ACCType|| link.name == "My Profile" || link.name == "Setting") &&
+                (link.type == ACCOUNT_TYPE|| link.name == "My Profile" || link.name == "Setting") &&
 
 
                                 <NavLink to={link.path}>

@@ -10,8 +10,8 @@ import toast from 'react-hot-toast'
 
 const CreateCourse = () => {
  
-   let inputref=useRef();
-   let secretKey='key'
+  
+
 
 const [isPlaying, setIsPlaying] = useState(false);
 const [progress, setProgress] = useState(0);
@@ -25,7 +25,7 @@ const [progress, setProgress] = useState(0);
   const[videourl,setvideoUrl]=useState('')
   const[loading,setLoading]=useState(false)
   const navigate = useNavigate();
-  const { setEnroll,submitbutton, setsubmitbutton,enroll, mainDataOfCourse, setMainDataOfCourse, editId,toggle,settoggle } = useContext(Appcontext)
+  const { setEnroll,enroll, mainDataOfCourse, setMainDataOfCourse, editId,toggle,settoggle } = useContext(Appcontext)
   
   const ids = new Date().getTime().toString()
 
@@ -58,13 +58,7 @@ const [progress, setProgress] = useState(0);
     AOS.init({ duration: 1000 })
   }, [mainDataOfCourse]);
 
-  useEffect(() => {
-
-
-    if (inputref.current) {
-      setsubmitbutton(inputref.current.value !== '');
-    }
-  }, [inputref.current]);
+ 
 
 
 
@@ -166,7 +160,7 @@ const xhr = new XMLHttpRequest();
                 setLoading(false)
                 toast.success("Image uploaded")
                setProgress(0)
-          setsubmitbutton(false)}
+         }
         
         else{
                 setLoading(false)
@@ -352,9 +346,9 @@ e.preventDefault();
         <div className=' w-full h-full  relative'onClick={()=>document.querySelector(".input_field").click()}>
 
  {
-  toggle?(enroll.image?(<img src={URL.createObjectURL(enroll.image)} alt="No image here" className=' w-full rounded-md h-full object-fill' />): (<div className='w-full h-full flex justify-center items-center text-white text-[100px] bg-pure-greys-600'><FaCloudUploadAlt /></div>)
+  toggle?(enroll.image?(<img src={URL.createObjectURL(enroll.image)} alt="Not Available" className=' w-full rounded-md h-full object-fill' />): (<div className='w-full h-full flex justify-center items-center text-white text-[100px] bg-pure-greys-600'><FaCloudUploadAlt /></div>)
   ):
-  (enroll.image?(isImageUrl(enroll.image)?(<img src={enroll.image} alt='No image here' className=' w-full rounded-md h-full object-fill' />):(<img src={URL.createObjectURL(enroll.image)} className=' w-full h-full aspect-square object-fill' />))
+  (enroll.image?(isImageUrl(enroll.image)?(<img src={enroll.image} alt='No available' className=' w-full rounded-md h-full object-fill' />):(<img src={URL.createObjectURL(enroll.image)} className=' w-full h-full aspect-square object-fill' />))
    : (<div className='w-full h-full flex justify-center items-center text-white text-[100px] bg-pure-greys-600'><FaCloudUploadAlt /></div>))
  }
  <input type='file' name='image' accept="image/*" className='text-white  input_field absolute top-9 hidden' onChange={changeHandler}  />

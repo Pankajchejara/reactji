@@ -8,7 +8,7 @@ import toast from 'react-hot-toast';
 const SignupForm = ({setIsLoggedIn}) => {
     
     const navigate = useNavigate();
-    let secretKey='key'
+ 
     const [formData, setFormData] = useState({
         firstName:"",
         lastName:"",

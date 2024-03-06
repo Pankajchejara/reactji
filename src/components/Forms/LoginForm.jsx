@@ -7,7 +7,7 @@ import toast from 'react-hot-toast';
 const LoginForm = ({setIsLoggedIn}) => {
     // const {signUpdata,setSignUpData,}=useContext(Appcontext)
     const navigate = useNavigate();
-    let secretKey='key'
+ 
     const [formData, setFormData] = useState( {
         email:"", password:""
     })

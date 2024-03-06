@@ -5,7 +5,7 @@ import toast from 'react-hot-toast'
 const Purchased = () => {
   
   const {buycourse,setBuyCourse}=useContext(Appcontext)
-  let secretKey='key'
+  
   const [isPlaying, setIsPlaying] = useState(false);
 
   const togglePlay = () => {

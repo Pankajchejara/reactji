@@ -5,7 +5,7 @@ import IconBtn from '../../Common.jsx/Icon'
 
 const MyCourses = () => {
 
-const {mainDataOfCourse,setMainDataOfCourse, setsubmitbutton,setEditId,setEnroll,settoggle}=useContext(Appcontext)
+const {mainDataOfCourse,setMainDataOfCourse, setEditId,setEnroll,settoggle}=useContext(Appcontext)
 
 const navigate=useNavigate();
 
@@ -23,7 +23,7 @@ function EditCourse(elem){
   navigate('/dashboard/CreateCourse')
   setEnroll((prev)=>{return {...prev,title:elem.title,about:elem.about,image:elem.image,video:elem.video}});
   setEditId(elem.id);
-  setsubmitbutton(false);
+  
 }
 
 function CreateCourseHandle(){

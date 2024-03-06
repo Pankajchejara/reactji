@@ -7,7 +7,7 @@ import IconBtn from '../../Common.jsx/Icon'
 const Setting = () => {
 
   let navigate = useNavigate()
-  let secretKey='key'
+
 
   let obj = JSON.parse((localStorage.getItem("signUpData")))
 
