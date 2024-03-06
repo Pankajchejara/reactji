@@ -8,7 +8,7 @@ import Dashboard from "./components/Dashboard/Dashboard";
 import Home from "./components/Home";
 import MyCourses from "./components/InstructorCourseDetail/MyCourses";
 import PrivateRoute from "./components/PrivateRoute";
-import Dictionary from './Common.jsx/NavbarDetails/Dictionary'
+import Dictionary from './Common.jsx/NavbarDetails/Dictionary' 
 import Cardgame from "./Common.jsx/NavbarDetails/Cardgame";
 import Courses from "./components/StudentsCourseDetails/Courses";
 import Purchased from "./components/StudentsCourseDetails/Purchased";
