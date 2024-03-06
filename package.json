@@ -2,7 +2,7 @@
   "name": "react-tailwind-css-starter-pack",
   "homepage": " https://github.com/Pankajchejara/Newrepo.git",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@codaworks/react-glow": "^1.0.6",
     "aos": "^2.3.4",
