@@ -66,7 +66,7 @@ const Navbar = (props) => {
                     }
                     <div className='  hidden gap-x-7  lg:flex   justify-center   items-center'>
 
-                        <Link to="/reactji" className='text-white font-bold'>Home</Link>
+                        <Link to="/" className='text-white font-bold'>Home</Link>
 
                         <Link to="/Dictionary" className='text-white font-bold'>Dictionary</Link>
                         <Link to="/Cardgame" className='text-white font-bold'>Cardgame</Link>
