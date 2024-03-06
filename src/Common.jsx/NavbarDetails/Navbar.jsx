@@ -162,7 +162,7 @@ const Navbar = (props) => {
                 (link.type == ACCOUNT_TYPE|| link.name == "My Profile" || link.name == "Setting") &&
 
 
-                                <NavLink to={link.path}>
+                                <NavLink to={link.path} key={index}>
                                     <div key={index} className={`py-[8px] ${matchRoute(link.path) ? "bg-yellow-800 border-l-yellow-100 border-l-[2px] text-yellow-100" : "bg-opacity-0 text-black"} text-center`}>
                                         {link.name}
 

@@ -17,7 +17,7 @@ const HeroSection = () => {
 <GlowCapture>
 <Glow>
 <div className=' glow:border-blue-100 glow:bg-blue-5/10 mt-[100px] border-2 border-pure-greys-900 rounded-xl relative w-11/12 mx-auto gap-y-9 flex flex-col items-center justify-center py-8'>
-<div className="flex flex-col w-full justify-center items-center xl:max-w-[900px] text-center gap-4"><h1 className="text-5xl sm:text-[3.75rem] font-semibold text-white  ">Defeat the Fear to Success with LittleWorld</h1><p class=" text-white text-shark-300 text-base font-normal sm:max-w-[500px]  ">Elevate your absorbing skills, solve challenges, and unlock the world of Leaning possibilities.</p></div>
+<div className="flex flex-col w-full justify-center items-center xl:max-w-[900px] text-center gap-4"><h1 className="text-5xl sm:text-[3.75rem] font-semibold text-white  ">Defeat the Fear to Success with LittleWorld</h1><p className=" text-white text-shark-300 text-base font-normal sm:max-w-[500px]  ">Elevate your absorbing skills, solve challenges, and unlock the world of Leaning possibilities.</p></div>
 
 
 <div className=' z-10 w-[230px] bg-richblack-700 flex justify-center items-center py-2 rounded-2xl'>
