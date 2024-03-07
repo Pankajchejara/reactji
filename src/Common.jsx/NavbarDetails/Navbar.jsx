@@ -140,7 +140,7 @@ const Navbar = (props) => {
 
 
 
-                    <Link to="/" className={`text-white font-bold w-full ${matchRoute("/") ? "bg-yellow-800 border-l-yellow-100 border-l-[2px] text-yellow-100" : "bg-opacity-0"}    `}><div className='flex py-2 justify-between opacity-90  w-[70%] mx-auto'><FaHome className='text-2xl' />Home</div></Link>
+                    <Link to="/reactji" className={`text-white font-bold w-full ${matchRoute("/") ? "bg-yellow-800 border-l-yellow-100 border-l-[2px] text-yellow-100" : "bg-opacity-0"}    `}><div className='flex py-2 justify-between opacity-90  w-[70%] mx-auto'><FaHome className='text-2xl' />Home</div></Link>
 
                     <Link to="/Games" className={`text-white font-bold w-full ${matchRoute("/Games") ? "bg-yellow-800 border-l-yellow-100 border-l-[2px] text-yellow-100" : "bg-opacity-0"}    `}><div className='flex justify-between py-2  w-[70%] mx-auto opacity-90 '><CgGames className='text-2xl' />Games</div></Link>
 

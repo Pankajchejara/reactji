@@ -9,8 +9,8 @@ import Appcontextprovider from '../src/context/Appcontext'
 import { Toaster } from 'react-hot-toast';
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <Appcontextprovider basename="/reactji">
-     <HashRouter >
+  <Appcontextprovider >
+     <HashRouter  >
     <App />
     <Toaster />
     </HashRouter>
