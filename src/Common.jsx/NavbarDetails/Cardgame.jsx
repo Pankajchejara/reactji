@@ -10,7 +10,7 @@ const Cardgame = () => {
   const [score, setScore] = useState(0);
   const [done, setDone] = useState(true);
 const [loading,setLoading]=useState(true);
-const ErrorImage="http://res.cloudinary.com/dqr1ihw8d/image/upload/v1709390466/hk1afhsrucj0dbdukkpd.jpg"
+const ErrorImage="https://res.cloudinary.com/dqr1ihw8d/image/upload/v1709390466/hk1afhsrucj0dbdukkpd.jpg"
   const unsplashurl=`https://api.unsplash.com/search/photos?page=1&query=${selectedWord.word}&client_id=p7Sl3eBqlIgMOZnRAGaC0g0ACR3lf5risDUIPGZDeXc` 
   const[wrong,setWrong]=useState(0);
 const rightaud =new Audio(RightAnswer)

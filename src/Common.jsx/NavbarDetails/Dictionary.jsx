@@ -6,7 +6,7 @@ import { AiFillSound } from "react-icons/ai";
 
 import toast from 'react-hot-toast';
 
-let ErrorImage=" http://res.cloudinary.com/dqr1ihw8d/image/upload/v1709386219/eex2ojsnzhpzyf82bxjx.jpg"
+let ErrorImage=" https://res.cloudinary.com/dqr1ihw8d/image/upload/v1709386219/eex2ojsnzhpzyf82bxjx.jpg"
 const Dictionary = () => {
 
 

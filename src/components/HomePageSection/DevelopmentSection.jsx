@@ -8,9 +8,9 @@ import AOS from 'aos'
 import 'aos/dist/aos.css'
 
 const DevelopmentSection = () => {
-  let heroImage=" http://res.cloudinary.com/dqr1ihw8d/image/upload/v1709385176/cf97rriuqmoeew2uears.png"
-  let bookImage=" http://res.cloudinary.com/dqr1ihw8d/image/upload/v1709385275/pzlivlg208x9zsx8ciqc.png"
-  let gamePadImage=" http://res.cloudinary.com/dqr1ihw8d/image/upload/v1709385350/j7kp10v1izqippxahfy4.png"
+  let heroImage=" https://res.cloudinary.com/dqr1ihw8d/image/upload/v1709385176/cf97rriuqmoeew2uears.png"
+  let bookImage=" https://res.cloudinary.com/dqr1ihw8d/image/upload/v1709385275/pzlivlg208x9zsx8ciqc.png"
+  let gamePadImage=" https://res.cloudinary.com/dqr1ihw8d/image/upload/v1709385350/j7kp10v1izqippxahfy4.png"
 
   useEffect(()=>{
     AOS.init({duration :2000})
