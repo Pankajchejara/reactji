@@ -5,7 +5,7 @@ import Template from '../components/Forms/Template'
 const Signup = ({setIsLoggedIn}) => {
   return (
     <Template
-      title="Join the millions learning to code with StudyNotion for free"
+      title="Supercharge Your Learning Journey with LittleWorld – Explore for Free"
       desc1="Build skills for today, tomorrow, and beyond."
       desc2="Education to future-proof your career."
       

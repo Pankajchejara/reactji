@@ -10,7 +10,7 @@ import { Toaster } from 'react-hot-toast';
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Appcontextprovider >
-     <BrowserRouter  basename="/reactji" >
+     <BrowserRouter   >
     <App />
     <Toaster />
     </BrowserRouter>

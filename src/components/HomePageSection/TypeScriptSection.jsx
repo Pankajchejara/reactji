@@ -18,7 +18,7 @@ const TypeScriptSection = () => {
 {/* first div  */}
       <div className='lg:flex-row xl:flex-row xl:justify-between lg:justify-between md:flex-col md:items-center md:justify-center sm:justify-center items-center flex flex-col gap-y-4  justify-between '>
 
-<Skill Colour={"yellow"} text={text1}/>
+<Skill Colour={"blue"} text={text1}  outline={true}/>
  
 
  {/* types  */}

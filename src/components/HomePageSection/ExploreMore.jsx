@@ -28,7 +28,7 @@ const ExploreMore = () => {
   };
 
   return (
-    <div className=" w-full h-full  flex flex-col gap-y-6 py-7">
+    <div className=" w-full h-full  flex flex-col gap-y-6 py-7 items-center">
       <div className="flex flex-col gap-y-2 lg:flex-row border w-[200px] border-blue-300 lg:border-none items-center justify-center gap-x-4 lg:w-11/12 mx-auto   rounded-xl">
         {
             tabsName.map((data,index)=>{

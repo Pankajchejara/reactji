@@ -1,4 +1,4 @@
-import React, {  useEffect, useState } from 'react'
+import React, {  useState } from 'react'
 import Spinner from '../../components/Spinner';
 
 import { CiSearch } from "react-icons/ci"
@@ -15,6 +15,7 @@ const Dictionary = () => {
     
     const[music,setMusic]=useState("")
     const[image,setImage]=useState("")
+    const[viewAudioIcon,setViewAudioIcon]=useState(true)
  
     const[example,SetExample]=useState("")
     const[pos,setPos]=useState('')
@@ -36,7 +37,7 @@ try{
     const alldata= await response.json();
     
 
-    const syn=((alldata)[0].meanings[0].synonyms)
+    
     const pos=(alldata[0].meanings[0].partOfSpeech)
 const exam=(alldata[0].meanings[0].definitions[0].example)
    const defination=(alldata[0].meanings[0].definitions[0].definition)
@@ -51,8 +52,12 @@ const exam=(alldata[0].meanings[0].definitions[0].example)
    
    catch{
     setDefination("no definaton" )
+    SetExample("No example Available")
+    setPos("Error")
     setLoading(false)
-    toast.alert("please type carefully")
+    setViewAudioIcon(false)
+    setImage(ErrorImage)
+    toast.error("please type carefully")
 
 }
 
@@ -62,11 +67,11 @@ try{
     const unsplashdata=await fetch(unsplashurl)
     const unsplashJsonData=await unsplashdata.json()
     
-    setImage(unsplashJsonData.results[0].urls.small)
+    !viewAudioIcon?(setImage(ErrorImage)):(setImage(unsplashJsonData.results[0].urls.small))
+    
 }
 catch{
   setLoading(false)
-    setImage(ErrorImage)
     toast.error("Something Went Wrong")
 }
 
@@ -121,7 +126,9 @@ catch{
                </div>
             <div className='flex gap-x-[30px] w-full p-[10px]'>
                   <p className=' font-bold text-brown-200 text-3xl'>{inword}</p>
-                  <button onClick={clickToPlayAudio}><AiFillSound className='text-blue-100 text-2xl'/></button>
+                {
+                 viewAudioIcon&& <button onClick={clickToPlayAudio}><AiFillSound className='text-blue-100 text-2xl'/></button>
+                }
             </div>
 
          </div>}

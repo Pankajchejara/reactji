@@ -3,14 +3,13 @@ import React, {  useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
 import IconBtn from '../../Common.jsx/Icon'
-
+import { decrypt, encrypt } from 'n-krypta'
 const Setting = () => {
 
   let navigate = useNavigate()
+var secretKey="@@123"
 
-
-  let obj = JSON.parse((localStorage.getItem("signUpData")))
-
+    let obj=decrypt((JSON.parse ( localStorage.getItem("signUpData"))),secretKey)
 
 
   const [showOldPassword, setShowOldPassword] = useState(false)
@@ -40,17 +39,25 @@ const Setting = () => {
 
   function clickhandler(e) {
     e.preventDefault()
-    if(Password.oldPassword===SignUpdataobject.password){
+    try{
 
-      localStorage.setItem("signUpData", JSON.stringify(({...SignUpdataobject,password:Password.newPassword,confirmPassword:Password.newPassword})))
+    
+    if(Password.oldPassword===SignUpdataobject.password){
+ 
+  let encryptData=encrypt({...SignUpdataobject,password:Password.newPassword,confirmPassword:Password.newPassword},secretKey)
+      localStorage.setItem("signUpData",JSON.stringify(encryptData))
       
     }
     else{
-
-      localStorage.setItem("signUpData", JSON.stringify((SignUpdataobject)));
+ 
+  let encryptData=encrypt(SignUpdataobject,secretKey)
+      localStorage.setItem("signUpData",(JSON.stringify(encryptData)));
       
     }
-
+  }catch{
+    localStorage.setItem("signUpData",obj)
+  }
+    
 
 
     navigate('/dashboard/profile')

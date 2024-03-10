@@ -52,7 +52,7 @@ navigate('/dashboard/purchased')
 
     
     <div className='w-full flex-wrap  h-full mx-auto flex  gap-x-[20px] justify-center items-center  gap-y-[10px]'>
-  {
+  { !mainDataOfCourse.length==0&&(
     mainDataOfCourse.map((obj)=>{
       
         return <div key={obj.id}>
@@ -89,15 +89,17 @@ navigate('/dashboard/purchased')
  </div>
     }
  </div>
-       })
+       }))
 } 
-    
+   {
+    mainDataOfCourse.length==0&&<p className='text-white text-3xl text-center'>No Course Available</p>
+   }
     
 
 
 
     </div>
-   
+
     </div>
   )
 }

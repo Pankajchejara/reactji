@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Appcontext } from '../../context/Appcontext'
 import { useNavigate } from 'react-router-dom'
 import AOS from 'aos'
@@ -10,9 +10,11 @@ import toast from 'react-hot-toast'
 
 const CreateCourse = () => {
  
+  function selectFileVideoHandler(){
+    document.querySelector(".videoinput_field").click();
+  }
   
-
-
+const[videoShow,setVideoShow]=useState(true)
 const [isPlaying, setIsPlaying] = useState(false);
 const [progress, setProgress] = useState(0);
   const togglePlay = () => {
@@ -26,9 +28,8 @@ const [progress, setProgress] = useState(0);
   const[loading,setLoading]=useState(false)
   const navigate = useNavigate();
   const { setEnroll,enroll, mainDataOfCourse, setMainDataOfCourse, editId,toggle,settoggle } = useContext(Appcontext)
-  
-  const ids = new Date().getTime().toString()
 
+  const ids = new Date().getTime().toString()
 
   function changeHandler(e) {
 
@@ -52,14 +53,13 @@ const [progress, setProgress] = useState(0);
 
 
   useEffect(() => {
-
-
+   
+   
     localStorage.setItem("Enroll", JSON.stringify( (mainDataOfCourse)))
     AOS.init({ duration: 1000 })
   }, [mainDataOfCourse]);
 
  
-
 
 
   // submit data 
@@ -124,7 +124,7 @@ const [progress, setProgress] = useState(0);
 
 //  fetch image 
 
-  async function  fetchImagedata(){
+  async function  UploadImage(){
     try{
       setLoading(true)
       let data = new FormData()
@@ -197,7 +197,7 @@ xhr.send(data);
    
   // fetch video 
  
-    const fetchdatavideo = async () => {
+    const UploadVideo = async () => {
       try {
         if (!video) {
           toast.alert('Please select a video file.');
@@ -233,6 +233,7 @@ xhr.send(data);
               const data = JSON.parse(xhr.responseText);
               if(IsVideoUrl(data.secure_url)){
                 setvideoUrl(data.secure_url)
+                setVideoShow(true)
   setEnroll((prev)=>{
     return{...prev,video:data.secure_url}
   })
@@ -261,7 +262,7 @@ xhr.send(data);
           }
           catch(err){
             setLoading(false)
-           toast.error(" Error ! please select image again")
+           toast.error(" Error ! please select video again")
            setProgress(0)
           }
         }
@@ -272,7 +273,7 @@ xhr.send(data);
 function submitImagehandle(e){
 e.preventDefault()
     
-fetchImagedata();
+UploadImage();
  }
 
 
@@ -313,10 +314,11 @@ fetchImagedata();
   function changeHandlervideo(e){
 
 setVideo(e.target.files[0])
+setVideoShow(false)
   }
 function subvideohandle(e){
 e.preventDefault();
-  fetchdatavideo()
+UploadVideo()
   
 }
   
@@ -327,8 +329,8 @@ e.preventDefault();
       <div className='w-11/12 mx-auto py-5'>
         <div className='py-[20px] text-center'>
           <h2 className='text-white text-center font-bold text-3xl'>Create course</h2>
-          <p className='text-red-100 text-center font-bold text-md'><sup>*</sup> Image size should be less than 500 kb</p>
-          <p className='text-red-100 text-center font-bold text-md'> <sup>*</sup>video size should be around 1 mb</p>
+          <p className='text-red-100  text-center font-bold text-md'><sup>*</sup> Image size should be less than Upto 20Mb</p>
+          <p className='text-red-100  text-center font-bold text-md'> <sup>*</sup>video size should be less than Upto 100 mb</p>
         </div>
 
         
@@ -348,11 +350,12 @@ e.preventDefault();
  {
   toggle?(enroll.image?(<img src={URL.createObjectURL(enroll.image)} alt="Not Available" className=' w-full rounded-md h-full object-fill' />): (<div className='w-full h-full flex justify-center items-center text-white text-[100px] bg-pure-greys-600'><FaCloudUploadAlt /></div>)
   ):
-  (enroll.image?(isImageUrl(enroll.image)?(<img src={enroll.image} alt='No available' className=' w-full rounded-md h-full object-fill' />):(<img src={URL.createObjectURL(enroll.image)} className=' w-full h-full aspect-square object-fill' />))
+  (enroll.image?(isImageUrl(enroll.image)?(<img src={enroll.image} alt='No available' className=' w-full rounded-md h-full object-fill' />):(<img src={URL.createObjectURL(enroll.image)} alt="not Available" className=' w-full h-full aspect-square object-fill' />))
    : (<div className='w-full h-full flex justify-center items-center text-white text-[100px] bg-pure-greys-600'><FaCloudUploadAlt /></div>))
  }
- <input type='file' name='image' accept="image/*" className='text-white  input_field absolute top-9 hidden' onChange={changeHandler}  />
-        
+ 
+ <input type='file' name='image' accept="image/*" className='text-white  input_field  absolute top-9 hidden' onChange={changeHandler}  />
+      
           </div>
 
           
@@ -367,23 +370,26 @@ e.preventDefault();
 {/* videosection  start*/}
 <div className='  flex bg-pure-greys-700  justify-between enrollbox gap-y-3 gap-x-5 border-b-white'>
           
-  <div className='w-full h-full  ' onClick={()=>document.querySelector(".videoinput_field").click()}>
+  <div className='w-full  h-full ' onClick={selectFileVideoHandler}>
 
- 
-<video
-key={enroll.video}
-      className='h-full w-full'
-       controls
-       autoPlay={isPlaying}
-       onClick={togglePlay}
-       style={{ cursor: 'pointer' }}
-     >
-       <source src={enroll.video} type="video/mp4" />
-       Your browser does not support the video tag.
-     </video>
+{((videoShow || video) && (
+  <video
+    key={video ? URL.createObjectURL(video) : enroll.video}
+    className='object-fill'
+    controls width="100%" height="auto"
+    autoPlay={isPlaying}
+    onClick={togglePlay}
+    style={{ cursor: 'pointer' }}
+  >
+    <source src={video ? URL.createObjectURL(video) : enroll.video} type="video/mp4" />
+    
+  </video>
+))}
 
 
-     <input type='file' name='video' accept="video/*" className='text-white videoinput_field hidden' onChange={changeHandlervideo}  />
+
+     <input type='file' name='video' accept="video/*" className='text-white block lg:hidden videoinput_field ' onChange={changeHandlervideo}  />
+
   </div>
 
   

@@ -2,8 +2,9 @@ import React ,{useContext, useState}from 'react'
 import { Appcontext } from '../../context/Appcontext'
 import toast from 'react-hot-toast'
 
+
 const Purchased = () => {
-  
+
   const {buycourse,setBuyCourse}=useContext(Appcontext)
   
   const [isPlaying, setIsPlaying] = useState(false);
@@ -39,7 +40,7 @@ function clickhandlerdelete(){
       
 
     
-      <div className='w-full flex-wrap  h-full mx-auto flex  gap-x-[20px] justify-center items-center  gap-y-[10px]'>
+   {!(buycourse.length===0)?(   <div className='w-full flex-wrap  h-full mx-auto flex  gap-x-[20px] justify-center items-center  gap-y-[10px]'>
     {
       buycourse.map((obj)=>{
         
@@ -86,8 +87,8 @@ function clickhandlerdelete(){
   
   
   
-      </div>
-     
+      </div>):(<p className='text-white text-center text-3xl'>No purchased course Available here</p>)
+} 
       </div>
   )
 }

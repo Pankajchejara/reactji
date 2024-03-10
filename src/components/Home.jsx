@@ -20,8 +20,7 @@ import ExploreMore from './HomePageSection/ExploreMore';
 const Home = () => {
   
 
- 
- 
+
  
 useEffect(()=>{
   AOS.init({duration :500})
@@ -105,6 +104,9 @@ useEffect(()=>{
  
   <ReviewSlider/>
 </section>
+
+
+
 
 
 <section className='w-full h-full flex-wrap flex bg-pure-greys-700'>

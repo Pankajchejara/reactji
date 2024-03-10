@@ -18,9 +18,9 @@ useEffect(()=>{
 
   return (
     <div  >
-      <div className='w-11/12 h-full  py-[50px]  mx-auto flex flex-col lg:flex-row xl:flex-row md:flex-col sm:flex-col justify-between items-center gap-y-[50px] relative '>
+      <div className='  w-11/12 h-full  py-[50px]  mx-auto flex flex-col lg:flex-row xl:flex-row md:flex-col sm:flex-col justify-between items-center gap-y-[50px] relative '>
 
-<div className='lg:w-[500px]  lg:h-[350px] w-[320px] h-[350px] md:w-[550px] md:h-[380px] sm:w-[400px] sm-[350px] gap-y-4 flex flex-col justify-center '>
+<div data-aos='zoom-in'  className='lg:w-[500px] hover:shadow-cyan-400 shadow-md lg:h-[350px] w-[320px] h-[350px] md:w-[550px] md:h-[380px] sm:w-[400px] sm-[350px] gap-y-4 flex flex-col justify-center '>
   <p className='text-blue-200 font-bold text-xl sm:text-2xl'>LEARNINGS</p>
   <p className='font-bold text-white text-[30px] sm:text-[40px] leading-9'>Games entertain books educate both enlighten</p>
   <p className='opacity-70 text-white text-[15px] sm:text-xl '> learning, shaping skills through experiences</p>

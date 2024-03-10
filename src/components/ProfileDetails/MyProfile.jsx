@@ -3,11 +3,12 @@ import { RiEditBoxLine } from "react-icons/ri"
 import IconBtn from '../../Common.jsx/Icon';
 import { useNavigate } from 'react-router-dom';
 import AOS from 'aos'
+import {decrypt} from 'n-krypta'
 import 'aos/dist/aos.css'
-import {  } from 'n-krypta';
 
 const MyProfile = () => {
  
+  let secretKey='@@123'
   useEffect(()=>{
     AOS.init({duration :1000})
   },[])
@@ -16,7 +17,7 @@ const MyProfile = () => {
   
 
   const navigate=useNavigate();
-  let obj=JSON.parse (( localStorage.getItem("signUpData")))
+  let obj=decrypt((JSON.parse ( localStorage.getItem("signUpData"))),secretKey)
 
 return (
   <div data-aos="fade-up">

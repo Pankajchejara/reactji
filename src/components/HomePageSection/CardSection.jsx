@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Images } from '../../data/Links'
 import IconBtn from '../../Common.jsx/Icon'
 import { useNavigate } from 'react-router-dom'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 const CardSection = () => {
   let navigate =useNavigate()
@@ -9,13 +11,17 @@ function clickButtonHandler(){
 navigate('/Games')
 }
 
+useEffect(()=>{
+  AOS.init({duration :1000})
+},[])
+
   return (
     <div>
       <div className='w-11/12 mx-auto flex-wrap p-10'>
   <div className='flex flex-wrap mx-auto gap-y-5 justify-around '>
     {
       Images.map((img,index)=>{
-        return <div key={index} className='relative cursor-pointer py-6 hover:hover:shadow-cyan-500   w-[350px] h-[450px]   flex justify-center items-center bg-pure-greys-900 rounded-md shadow-md'>
+        return <div key={index} data-aos='zoom-in' className='relative cursor-pointer py-6 hover:hover:shadow-cyan-500   w-[350px] h-[450px]   flex justify-center items-center bg-pure-greys-900 rounded-md shadow-md'>
           <div className=' items-center w-[300px] h-[360px] flex flex-col gap-y-6 sm:gap-y-[5px]  transition-all duration-400'>
         <div className=' w-[280px] h-[180px] sm:w-full sm:h-[200px] rounded-md'>
         <img src={img.image} className='w-full h-[200px] object-cover transition duration-800 hover:scale-105 rounded-md' alt="Not available "/>

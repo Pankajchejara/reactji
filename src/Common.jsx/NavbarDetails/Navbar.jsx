@@ -13,17 +13,24 @@ import { CgGames } from "react-icons/cg";
 import { FaBook } from "react-icons/fa6";
 import { FaHome } from "react-icons/fa";
 import toast from 'react-hot-toast';
-
+import { encrypt,decrypt } from 'n-krypta';
 
 const Navbar = (props) => {
 
-    
     let navigate = useNavigate();
-   
-   
-    
-    let ACCOUNT_TYPE = (JSON.parse(localStorage.getItem("signUpData")));
-  
+    try{
+
+        var secretKey="@@123"
+       
+       
+        
+         var ACCOUNT_TYPE = (decrypt((JSON.parse(localStorage.getItem("signUpData"))),secretKey))?.accountType;
+         
+      
+    }
+    catch(error){
+           ACCOUNT_TYPE="student"
+    }
     let location = useLocation();
     const matchRoute = (route) => {
         return matchPath({ path: route }, location.pathname);
@@ -66,11 +73,11 @@ const Navbar = (props) => {
                     }
                     <div className='  hidden gap-x-7  lg:flex   justify-center   items-center'>
 
-                        <Link to="/" className='text-white font-bold'>Home</Link>
+                        <Link to="/" className={` font-bold ${matchRoute("/")? " text-yellow-100":"text-white"}`}>Home</Link>
 
-                        <Link to="/Dictionary" className='text-white font-bold'>Dictionary</Link>
-                        <Link to="/Cardgame" className='text-white font-bold'>Cardgame</Link>
-                        <Link to="/ContactUs" className='text-white font-bold'>ContactUs</Link>
+                        <Link to="/Dictionary" className={` font-bold ${matchRoute("/Dictionary")? " text-yellow-100":"text-white"}`}>Dictionary</Link>
+                        <Link to="/Cardgame" className={` font-bold ${matchRoute("/Cardgame")? " text-yellow-100":"text-white"}`}>Cardgame</Link>
+                        <Link to="/ContactUs" className={` font-bold ${matchRoute("/ContactUs")? " text-yellow-100":"text-white"}`}>ContactUs</Link>
 
 
 
@@ -154,16 +161,16 @@ const Navbar = (props) => {
                 {/* dashboard start  */}
                 <div className=' w-full relative py-7'>
                     <div className='w-full h-[30px] text-center text-white opacity-75 border-b-pure-greys-500 '>Dashobard</div>
-                    <div class="boxx transformm w-[100%] flex flex-col  gap-y-3">
+                    <div className="boxx transformm w-[100%] flex flex-col  gap-y-3">
                         {
-                            Links.map((link,index) => (
+                            Links.map((link,id) => (
 
 
-                (link.type == ACCOUNT_TYPE.accountType|| link.name == "My Profile" || link.name == "Setting") &&
+                (link.type == (ACCOUNT_TYPE)|| link.name == "My Profile" || link.name == "Setting") &&
 
 
-                                <NavLink to={link.path} key={index}>
-                                    <div key={index} className={`py-[8px] ${matchRoute(link.path) ? "bg-yellow-800 border-l-yellow-100 border-l-[2px] text-yellow-100" : "bg-opacity-0 text-black"} text-center`}>
+                                <NavLink to={link.path} key={id}>
+                                    <div key={id} className={`py-[8px] ${matchRoute(link.path) ? "bg-yellow-800 border-l-yellow-100 border-l-[2px] text-yellow-100" : "bg-opacity-0 text-black"} text-center`}>
                                         {link.name}
 
                                     </div>

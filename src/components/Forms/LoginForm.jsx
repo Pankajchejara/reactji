@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Link,  useNavigate } from 'react-router-dom';
-
+import {encrypt,decrypt} from 'n-krypta'
 import toast from 'react-hot-toast';
 
 const LoginForm = ({setIsLoggedIn}) => {
     // const {signUpdata,setSignUpData,}=useContext(Appcontext)
     const navigate = useNavigate();
- 
+ let secretKey='@@123'
+
     const [formData, setFormData] = useState( {
         email:"", password:""
     })
@@ -24,7 +25,23 @@ const LoginForm = ({setIsLoggedIn}) => {
         ) )
 
     }
-let signupdata=(JSON.parse((localStorage.getItem("signUpData"))))
+    try{
+
+        var signupdata=decrypt((JSON.parse((localStorage.getItem("signUpData")))),secretKey)
+    }
+    catch{
+      var signupdata=  {
+            firstName:"",
+            lastName:"",
+            email:"",
+            password:"",
+            confirmPassword:"",
+            dob:"",
+            about:"",
+            gender:""
+            
+        }
+    }
 
 
     function submitHandler(event) {

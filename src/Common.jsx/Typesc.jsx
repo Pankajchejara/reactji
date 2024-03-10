@@ -12,7 +12,7 @@ const Typesc = ({codeblock,Colour}) => {
       <Tilt>
         <GlowCapture>
         <Glow >
-      <div className={`glow:bg-cyan-100/20 glow:border-${Colour}-700/100 flex flex-row  py-4 lg:h-fit  xl:h-fit md:h-fit lg:w-[500px] md:w-[600px] sm:w-[400px] sm:h-[300px] h-[350px] w-[300px] border bg-pure-greys-800 relative border-pure-greys-300 `}> 
+      <div className={`glow:bg-cyan-100/20 glow:border-${Colour}-700/100 flex flex-row  py-4 lg:h-fit  xl:h-fit md:h-fit lg:w-[500px] md:w-[600px] sm:w-[400px] sm:h-[300px] h-[400px] w-[300px] border bg-pure-greys-800 relative border-pure-greys-300 `}> 
           
     
             <div className='text-center flex flex-col w-[10%]  text-white  font-inter font-bold ml-[20px] -mt-[10px] '>

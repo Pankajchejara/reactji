@@ -3,24 +3,30 @@ import React, { createContext, useState } from 'react'
 export const Appcontext=createContext();
 
 
+
 function getlocalitems (){
-  let list=( (localStorage.getItem('Enroll')))
+  let list=localStorage.getItem('Enroll')
   
   
   if(list){
-    return JSON.parse(( localStorage.getItem('Enroll')))
+    let getEnroll= JSON.parse( localStorage.getItem('Enroll'))
+  
+    return getEnroll;
+
   }
-    else{
+  else{
+    
     return []
   }
  
   }
 
 function getlocalitemslocal (){
-  let list=(localStorage.getItem('buycoursedata'))
+  let list=( localStorage.getItem('buycoursedata'))
   
   
   if(list){
+    
     return JSON.parse(( localStorage.getItem('buycoursedata')))
   }
     else{

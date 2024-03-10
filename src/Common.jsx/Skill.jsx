@@ -1,7 +1,7 @@
 import React from 'react'
 import IconBtn from './Icon'
 import { useNavigate } from 'react-router-dom'
-const Skill = ({Colour,text}) => {
+const Skill = ({Colour,text,outline}) => {
 const navigate=useNavigate()
 
 function ClickHandle(){
@@ -15,7 +15,7 @@ navigate('/dashboard/courses')
     {text} 
     
     <p className='font-bold opacity-70 text-white '>Fueling curiosity, our platform offers interactive learning for kids. Through engaging games and dynamic lessons, we inspire a lifelong love of learning. Explore, play, and grow with us</p>
-   <div><IconBtn text="Go to Learning" onclick={ClickHandle}/> </div> 
+   <div><IconBtn text="Go to Learning" outline={outline} onclick={ClickHandle}/> </div> 
   </div>
    
   )

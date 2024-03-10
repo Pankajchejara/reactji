@@ -3,6 +3,7 @@ import RightAnswer from '../../data/right.mp3'
 import WrongAnswer from '../../data/wrong.mp3'
 import Spinner from '../../components/Spinner';
 import IconBtn from '../Icon';
+import toast from 'react-hot-toast';
 const Cardgame = () => {
   const [wordList, setWordList] = useState([]);
   const [image, setImage] = useState('');
@@ -73,10 +74,12 @@ catch{
       setScore(score + 1);
       rightaud.play();
       setSelectedWord(getRandomWord(wordList));
+      toast.success("Right Answer")
     }
     else{
  setWrong(wrong+1);
  wrongaud.play();
+ toast.error("Wrong Answer")
     }
   };
 
@@ -98,10 +101,8 @@ catch{
     <div className='py-[80px] w-full '>
   {
     done?(  <div className='flex flex-col justify-center items-center rounded-[10px] w-[80%] mx-auto bg-richblack-700'>
-        <h1 className='text-3xl font-bold text-white mt-[10px] '>Kids Learning Game - Words</h1>
-        <br/>
-        <p className='text-blue-100'>RightAnswer: {score}</p>
-        <p className='text-red-100'>WrongAnswer: {wrong}</p>
+        <h1 className='text-3xl font-bold text-white mt-[20px] '>Kids Learning Game - Words</h1>
+       
         <div className='flex justify-center items-center flex-wrap' >
           {wordList.map((wordData, index) => (
             <div className='hover:bg-richblack-25 text-white '
