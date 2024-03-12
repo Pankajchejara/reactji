@@ -2,14 +2,14 @@ import "./App.css";
 import React, { useState } from "react";
 import Navbar from "./Common.jsx/NavbarDetails/Navbar";
 import {Routes, Route} from 'react-router-dom';
-// import ContactForm from "./Common.jsx/NavbarDetails/ContactForm";
+
 import Spinner from "./components/Spinner";
 import { Suspense } from "react";
 import PrivateRoute from "./components/PrivateRoute";
+import ForgetPassword from "./components/Forms/ForgetPassword";
 const Login =React.lazy(()=>import('./pages/Login'))
 const Signup =React.lazy(()=>import('./pages/Signup'))
 
-// import Signup from "./pages/Signup";
 const Dashboard =React.lazy(()=>import("./components/Dashboard/Dashboard"))
 const Home =React.lazy(()=>import("./components/Home"))
 const MyCourses =React.lazy(()=>import("./components/InstructorCourseDetail/MyCourses"))
@@ -21,16 +21,8 @@ const MyProfile =React.lazy(()=>import( "./components/ProfileDetails/MyProfile")
 const Courses =React.lazy(()=>import( "./components/StudentsCourseDetails/Courses"))
 const Purchased =React.lazy(()=>import( "./components/StudentsCourseDetails/Purchased"))
 const ContactForm =React.lazy(()=>import( './Common.jsx/NavbarDetails/ContactForm'))
-// import Dashboard from "./components/Dashboard/Dashboard";
-// import Home from "./components/Home";
-// import MyCourses from "./components/InstructorCourseDetail/MyCourses";
-// import Dictionary from './Common.jsx/NavbarDetails/Dictionary' 
-// import Cardgame from "./Common.jsx/NavbarDetails/Cardgame";
-// import Courses from "./components/StudentsCourseDetails/Courses";
-// import Purchased from "./components/StudentsCourseDetails/Purchased";
-// import Setting from "./components/ProfileDetails/Setting";
-// import MyProfile from "./components/ProfileDetails/MyProfile";
-// import CreateCourse from "./components/InstructorCourseDetail/CreateCourse";
+
+
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -43,6 +35,7 @@ function App() {
 <Routes>
  
 <Route path="/login" element = {<Suspense fallback={<div className="w-full h-full flex justify-center text-white items-center">Loading...<Spinner/></div>}><Login  setIsLoggedIn={setIsLoggedIn} /></Suspense>} />
+<Route path="/forget" element = {<Suspense fallback={<div className="w-full h-full flex justify-center text-white items-center">Loading...<Spinner/></div>}><ForgetPassword/></Suspense>} />
 <Route path="/Dictionary" element = {<Suspense fallback={<div className="w-full h-full flex justify-center text-white items-center">Loading...<Spinner/></div>}><Dictionary   /></Suspense>} />
 <Route path="/Cardgame" element = {<Suspense fallback={<div className="w-full h-full flex justify-center text-whiteitems-center">Loading...<Spinner/></div>}><Cardgame/></Suspense>} />
 <Route path="/ContactUs" element = {<Suspense fallback={<div className="w-full h-full flex justify-center text-white items-center">Loading...<Spinner/></div>}><ContactForm   /></Suspense>} />

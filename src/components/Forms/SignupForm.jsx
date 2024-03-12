@@ -1,13 +1,16 @@
-import React, {useState } from 'react'
+import React, {useContext, useEffect, useState } from 'react'
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-
+import { Appcontext } from '../../context/Appcontext';
 import { useNavigate } from 'react-router-dom';
-import {encrypt,decrypt} from 'n-krypta'
+import { encrypt,decrypt } from 'n-krypta';
 import toast from 'react-hot-toast';
 
+
 const SignupForm = ({setIsLoggedIn}) => {
-    
-let secretKey='@@123'
+const secretKey='@@123'
+const {signupArray,setSignUpArray}=useContext(Appcontext)
+
+
 
     const navigate = useNavigate();
  
@@ -63,17 +66,29 @@ let secretKey='@@123'
                 accountType
             }
          
-        let encryptFinalData=encrypt(finalData,secretKey)
         
-            
-            localStorage.setItem("signUpData",JSON.stringify(( encryptFinalData)))
+       const SignUpEmailCheck=(signupArray.filter((data)=>{
+        return (data.email==finalData.email)
+        
+       }))
+       
+if(SignUpEmailCheck.length!=0){
+    toast.error("email already exists Please Login")
+}
+else{
+
+    signupArray.push(finalData);
+         let encryptSignupArray=encrypt(signupArray,secretKey)
     
-         
+    localStorage.setItem("signUpArray",JSON.stringify(( encryptSignupArray)))
 
-          
+ 
 
-           toast.success("SignUp Successful")
-        navigate("/dashboard/profile");
+  
+
+   toast.success("SignUp Successful")
+navigate("/dashboard/profile");
+}
 
     }
 

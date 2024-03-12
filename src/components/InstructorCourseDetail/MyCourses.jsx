@@ -51,8 +51,10 @@ function CreateCourseHandle(){
  
         <img src={obj.image} className='object-cover w-full h-full aspect-auto' alt='not Available'/>
                 </div>
-         <p className='text-white text-2xl'>{obj.title}</p>
-       <p className='text-white font-sarif text-center '>  {(obj.about).substring (0,50)}</p>
+                <div className='flex flex-col justify-center items-center'>
+                 <p className='text-white text-2xl break-words w-full text-center '>{`${( obj.title).substring(0,20)}`}</p>
+        <p className='text-white font-sarif overflow-y-auto break-words w-full '>{`${( obj.about).substring(0,30)}...`}</p>
+  </div>
        <div className='flex flex-col w-full gap-y-3'>
        <button className=' w-[80%] mx-auto hover:opacity-70 rounded-md bg-red-100 opacity-60' onClick={()=>DeleteCourse(obj.id)}>Delete</button>
        <button className=' w-[80%] hover:bg-yellow-25 mx-auto rounded-md bg-yellow-200 ' onClick={()=>EditCourse(obj)}>EDIT</button></div>

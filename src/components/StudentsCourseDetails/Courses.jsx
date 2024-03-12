@@ -1,9 +1,9 @@
 import React ,{useContext,  useState}from 'react'
 import { Appcontext } from '../../context/Appcontext'
 import { useNavigate } from 'react-router-dom'
-
+import toast from 'react-hot-toast'
 const Courses = () => {
-    const {mainDataOfCourse,setBuyCourse}=useContext(Appcontext)
+    const {mainDataOfCourse,setBuyCourse,buycourse}=useContext(Appcontext)
 
 const[show,setShow]=useState(false);
 const navigate=useNavigate();
@@ -24,15 +24,23 @@ const [isPlaying, setIsPlaying] = useState(false);
       let newobj=  {...obj,id:new Date().getTime().toString()}
       
       
-      
-      setBuyCourse((prev) => {
-      const newArray = [...prev, newobj]
-     
-      return newArray
-    });
-    
-                
+      let buycoursedata=buycourse.find((data)=>{
+        return data.title===obj.title &&data.about===obj.about&&data.image===obj.image&&data.video===obj.video
+      })
+      if(buycoursedata){
+        toast.error("Course Already Purchased")
+      }
+      else{
+
+        setBuyCourse((prev) => {
+        const newArray = [...prev, newobj]
+       
+        return newArray
+      });
+      toast.success("Course Purchased")          
 navigate('/dashboard/purchased')
+      }
+    
     }
 
 
@@ -57,17 +65,17 @@ navigate('/dashboard/purchased')
       
         return <div key={obj.id}>
         
-        <div  className='  bg-pure-greys-900 hover:shadow-pure-greys-500  shadow-md  rounded-md w-[300px] h-[400px]  flex flex-col gap-y-[5px] items-center '>
+        <div  className=' overflow-auto  bg-pure-greys-900 hover:shadow-pure-greys-500  shadow-md  rounded-md w-[300px] h-[400px]  flex flex-col gap-y-[15px] items-center '>
         <div className='w-full h-[200px] rounded-md border border-b-white'>
    
    
 
        <img src={obj.image} className='object-cover w-full h-full aspect-auto' alt='not available'/>
                </div>
-
-               <p className='text-white text-2xl'>{obj.title}</p>
-      <p className='text-white font-sarif'> {obj.about}</p>
-
+               <div className='flex flex-col justify-center items-center'>
+                 <p className='text-white text-2xl break-words w-full '>{`${( obj.title).substring(0,20)}`}</p>
+        <p className='text-white font-sarif overflow-y-auto break-words w-full '>{`${( obj.about).substring(0,30)}...`}</p>
+  </div>
      <button className= 'text-blue-400  w-[80%] mx-auto  rounded-md bg-blue-100 ' onClick={()=>BuyCourseHandler(obj)}>buy course</button>
     
       </div>

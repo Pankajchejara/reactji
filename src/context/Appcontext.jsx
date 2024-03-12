@@ -1,15 +1,18 @@
 import React, { createContext, useState } from 'react'
-
+import { encrypt,decrypt } from 'n-krypta';
 export const Appcontext=createContext();
-
+let secretKey='@@123'
 
 
 function getlocalitems (){
-  let list=localStorage.getItem('Enroll')
+try{
+
+
+  let list=(localStorage.getItem('Enroll'))
   
   
   if(list){
-    let getEnroll= JSON.parse( localStorage.getItem('Enroll'))
+    let getEnroll= decrypt(JSON.parse(localStorage.getItem('Enroll')),secretKey)
   
     return getEnroll;
 
@@ -18,18 +21,49 @@ function getlocalitems (){
     
     return []
   }
+}catch{
+  return []
+}
+  }
+
+function getlocalitemsSignUp (){
+  try{
+
+    let list=(localStorage.getItem("signUpArray"))
+  
+    
+  if(list){
+    let SignUpObject=decrypt(JSON.parse(localStorage.getItem("signUpArray")),secretKey)
+    
+  
+    return SignUpObject;
+
+  }
+  else{
+    
+    return []
+  }
+  }catch{
+    return []
+  }
+  
  
   }
 
 function getlocalitemslocal (){
-  let list=( localStorage.getItem('buycoursedata'))
-  
-  
-  if(list){
+  try{
+
+    let list=( localStorage.getItem('buycoursedata'))
     
-    return JSON.parse(( localStorage.getItem('buycoursedata')))
-  }
-    else{
+    
+    if(list){
+      
+      return decrypt(JSON.parse( localStorage.getItem('buycoursedata')),secretKey)
+    }
+      else{
+      return []
+    }
+  }catch{
     return []
   }
  
@@ -46,7 +80,7 @@ export default function Appcontextprovider ({children}) {
 
 
     const[data,setData]=useState('');
-    const[signupdata,setSignUpData]=useState([]);
+    const[signupArray,setSignUpArray]=useState(getlocalitemsSignUp());
     const[buycourse,setBuyCourse]=useState(getlocalitemslocal());
 
     const[editId,setEditId]=useState([]);
@@ -63,7 +97,7 @@ export default function Appcontextprovider ({children}) {
         data,
         setData,
         img,
-        setImg,signupdata,setSignUpData,
+        setImg,signupArray,setSignUpArray,
        
         enroll,setEnroll,mainDataOfCourse,setMainDataOfCourse,editId,setEditId,toggle,settoggle,buycourse,setBuyCourse
     }

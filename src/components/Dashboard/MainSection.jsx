@@ -4,10 +4,12 @@ import React from 'react'
  import { encrypt,decrypt } from 'n-krypta'
  
 const MainSection = () => {
-let secretKey="@@123"
+const secretKey='@@123'
 try{
 
-  var ACCOUNT_TYPE=decrypt((JSON.parse((localStorage.getItem("signUpData")))),secretKey);
+  var signupArray=decrypt(JSON.parse((localStorage.getItem("signUpArray"))),secretKey)
+  var ACCOUNT_TYPE=signupArray[signupArray.length-1]?.accountType
+ 
 }
 catch{
   var ACCOUNT_TYPE={
@@ -20,7 +22,7 @@ catch{
         Links.map((link,index)=>(
           
             
-              (link.type==ACCOUNT_TYPE.accountType||link.name=="My Profile"||link.name=="Setting")&&( <Sidebar key={index} link={link}/>)
+              (link.type==ACCOUNT_TYPE||link.name=="My Profile"||link.name=="Setting")&&( <Sidebar key={index} link={link}/>)
             
           
           

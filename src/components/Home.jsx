@@ -3,7 +3,6 @@ import React, { useEffect } from 'react'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 
-
 import Footer from '../Common.jsx/Footer';
 
 import VideoSection from './HomePageSection/VideoSection';
@@ -18,8 +17,8 @@ import HeroSection from './HomePageSection/HeroSection';
 import ExploreMore from './HomePageSection/ExploreMore';
 
 const Home = () => {
+ 
   
-
 
  
 useEffect(()=>{
@@ -105,7 +104,15 @@ useEffect(()=>{
   <ReviewSlider/>
 </section>
 
+<section className='h-[200px] w-full '>
+  {
+  
+    
+  }
 
+
+
+</section>
 
 
 

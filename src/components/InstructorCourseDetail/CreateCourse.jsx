@@ -7,9 +7,10 @@ import Spinner from '../Spinner'
 import { FaCloudUploadAlt } from "react-icons/fa";
 import IconBtn from '../../Common.jsx/Icon'
 import toast from 'react-hot-toast'
-
+import { encrypt,decrypt } from 'n-krypta'
 const CreateCourse = () => {
- 
+ let secretKey='@@123'
+
   function selectFileVideoHandler(){
     document.querySelector(".videoinput_field").click();
   }
@@ -54,8 +55,8 @@ const [progress, setProgress] = useState(0);
 
   useEffect(() => {
    
-   
-    localStorage.setItem("Enroll", JSON.stringify( (mainDataOfCourse)))
+   let encMainDataOfCourse=(mainDataOfCourse,encrypt)
+    localStorage.setItem("Enroll", JSON.stringify( (encMainDataOfCourse)))
     AOS.init({ duration: 1000 })
   }, [mainDataOfCourse]);
 
@@ -73,24 +74,26 @@ const [progress, setProgress] = useState(0);
 
     else if (!toggle){
       if(isImageUrl(enroll.image)){
-        setMainDataOfCourse(
+        
+        mainDataOfCourse.push((
           mainDataOfCourse.map((elem)=>{
             if(elem.id===editId){
               return {...elem,title:enroll.title,about:enroll.about,image:enroll.image,video:videourl}
             }
             return elem
           })
-         )
+         ))
       }
       else{
-        setMainDataOfCourse(
-          mainDataOfCourse.map((elem)=>{
-            if(elem.id===editId){
-              return {...elem,title:enroll.title,about:enroll.about,image:imageurl,video:videourl}
-            }
-            return elem
-          })
-         )
+        
+        mainDataOfCourse.push( mainDataOfCourse.map((elem)=>{
+          if(elem.id===editId){
+            return {...elem,title:enroll.title,about:enroll.about,image:imageurl,video:videourl}
+          }
+          return elem
+        }))
+         
+         
 
       }
   
@@ -104,12 +107,12 @@ const [progress, setProgress] = useState(0);
       
       setEnroll((prev)=>({...prev,id:ids,video:videourl}))
 
-       setMainDataOfCourse((prev)=>(
+      
+       mainDataOfCourse.push({...enroll,id:ids,image:imageurl,video:videourl})
+       
     
-        [...prev,{...enroll,id:ids,image:imageurl,video:videourl}])
     
-    
-        )
+        
         
 
           toast.success("Course Added Successfully")
@@ -375,6 +378,7 @@ UploadVideo()
 {((videoShow || video) && (
   <video
     key={video ? URL.createObjectURL(video) : enroll.video}
+   
     className='object-fill'
     controls width="100%" height="auto"
     autoPlay={isPlaying}

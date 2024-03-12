@@ -1,20 +1,22 @@
 import React ,{useContext, useState}from 'react'
 import { Appcontext } from '../../context/Appcontext'
 import toast from 'react-hot-toast'
+import { encrypt,decrypt } from 'n-krypta'
 
 
 const Purchased = () => {
-
+var secretKey='@@123'
   const {buycourse,setBuyCourse}=useContext(Appcontext)
   
   const [isPlaying, setIsPlaying] = useState(false);
+
 
   const togglePlay = () => {
     setIsPlaying((prevIsPlaying) => !prevIsPlaying);
   };
 const [show,setShow]=useState('');
-
-  localStorage.setItem("buycoursedata",JSON.stringify( (buycourse)))
+let encbuycourse=encrypt(buycourse,secretKey)
+  localStorage.setItem("buycoursedata",JSON.stringify( (encbuycourse)))
 
 
 function delhandle(id){
@@ -32,6 +34,7 @@ setShow(obj.id)
 function clickhandlerdelete(){
   setShow(false)
 }
+
   return (
 
 
@@ -53,10 +56,10 @@ function clickhandlerdelete(){
   
          <img src={obj.image} className='object-cover w-full h-full aspect-auto' alt='Not Available '/>
                  </div>
-  
-                 <p className='text-white text-2xl'>{obj.title}</p>
-        <p className='text-white font-sarif'> {obj.about}</p>
-  
+  <div className='flex flex-col justify-center items-center'>
+                 <p className='text-white text-2xl break-words w-full '>{`${( obj.title).substring(0,20)}`}</p>
+        <p className='text-white font-sarif overflow-y-auto break-words w-full '>{`${( obj.about).substring(0,30)}...`}</p>
+  </div>
         <button className='text-white w-[80%] mx-auto  rounded-md bg-blue-100  ' onClick={()=>delhandle(obj.id)}>delete</button>
        <button className= 'text-blue-400  w-[80%] mx-auto  rounded-md bg-yellow-100 ' onClick={()=>viewhandle(obj)}>viewDetails </button>
         </div>

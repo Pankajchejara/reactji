@@ -1,13 +1,22 @@
 import React, { useState } from 'react'
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Link,  useNavigate } from 'react-router-dom';
-import {encrypt,decrypt} from 'n-krypta'
-import toast from 'react-hot-toast';
+
+import toast from 'react-hot-toast'
+import { encrypt,decrypt } from 'n-krypta';
 
 const LoginForm = ({setIsLoggedIn}) => {
-    // const {signUpdata,setSignUpData,}=useContext(Appcontext)
+    var secretKey='@@123'
+
+
+    var SignUpArray= decrypt((JSON.parse(localStorage.getItem("signUpArray"))),secretKey)
+
+
+
+
+
     const navigate = useNavigate();
- let secretKey='@@123'
+
 
     const [formData, setFormData] = useState( {
         email:"", password:""
@@ -25,42 +34,47 @@ const LoginForm = ({setIsLoggedIn}) => {
         ) )
 
     }
-    try{
-
-        var signupdata=decrypt((JSON.parse((localStorage.getItem("signUpData")))),secretKey)
-    }
-    catch{
-      var signupdata=  {
-            firstName:"",
-            lastName:"",
-            email:"",
-            password:"",
-            confirmPassword:"",
-            dob:"",
-            about:"",
-            gender:""
-            
-        }
-    }
-
+   
 
     function submitHandler(event) {
         event.preventDefault();
-        if(signupdata.email===formData.email){
+        
+        const searchKey1 = 'email';
+const searchValue1 = formData.email
+const searchKey2 = 'password';
+const searchValue2 = formData.password
 
-            setIsLoggedIn(true);
-            navigate("/dashboard/profile");
-            toast.success("Login Successful")
-        }
+const foundObject = SignUpArray.find(obj => obj[searchKey1] === searchValue1 && obj[searchKey2] === searchValue2);
+
+              const NewfoundObject=SignUpArray.find(obj => obj[searchKey1] === searchValue1 )
         
         
-        
-            else{
-                toast.error("something wrong in password or email")
-                setFormData("")
-            }
+        if (foundObject) {
+            const foundArray=SignUpArray.filter((data)=>{
+                return  (data.email!==foundObject?.email);
+            })
+         
+          let newFoundArray=  [...foundArray,foundObject]
+          
+           let encNewFoundArray=encrypt(newFoundArray,secretKey)
            
-        
+            localStorage.setItem("signUpArray",JSON.stringify(encNewFoundArray))
+         
+          setIsLoggedIn(true);
+          navigate("/dashboard/profile");
+          toast.success("Login Successful")
+          
+        } else if(NewfoundObject) {
+            toast.error("Wrong Password Please type carefully")
+        }
+        else{
+            toast.error("Please Signup First")
+        }
+    
+
+
+
+       
 
 
 
@@ -109,7 +123,7 @@ const LoginForm = ({setIsLoggedIn}) => {
                 (<AiOutlineEye fontSize={24} fill='#AFB2BF'/>)}
             </span>
 
-            <Link to="#">
+            <Link to="/forget">
                 <p className='text-xs mt-1 text-blue-100 max-w-max ml-auto'>
                     Forgot Password
                 </p>

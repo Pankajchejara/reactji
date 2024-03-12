@@ -4,14 +4,21 @@ import { useNavigate } from 'react-router-dom'
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
 import IconBtn from '../../Common.jsx/Icon'
 import { decrypt, encrypt } from 'n-krypta'
+import toast from 'react-hot-toast'
 const Setting = () => {
 
   let navigate = useNavigate()
 var secretKey="@@123"
 
-    let obj=decrypt((JSON.parse ( localStorage.getItem("signUpData"))),secretKey)
 
+    
+    let NewArray=decrypt(JSON.parse ( localStorage.getItem("signUpArray")),secretKey)
+   
+    
 
+      var obj=NewArray[NewArray.length-1];
+    
+    
   const [showOldPassword, setShowOldPassword] = useState(false)
   const [showNewPassword, setShowNewPassword] = useState(false)
 
@@ -44,18 +51,33 @@ var secretKey="@@123"
     
     if(Password.oldPassword===SignUpdataobject.password){
  
-  let encryptData=encrypt({...SignUpdataobject,password:Password.newPassword,confirmPassword:Password.newPassword},secretKey)
-      localStorage.setItem("signUpData",JSON.stringify(encryptData))
+ 
+ 
+  let encryptData={...SignUpdataobject,password:Password.newPassword,confirmPassword:Password.newPassword}
+      
+
+      const updatedArray = NewArray.map(obj =>
+        obj.email === encryptData.email ? encryptData : obj
+      );
+      let encUpdatedArray=encrypt(updatedArray,secretKey)
+      localStorage.setItem("signUpArray",JSON.stringify(encUpdatedArray))
+
       
     }
     else{
  
-  let encryptData=encrypt(SignUpdataobject,secretKey)
-      localStorage.setItem("signUpData",(JSON.stringify(encryptData)));
+  const updatedArray = NewArray.map(obj =>
+    obj.email === SignUpdataobject.email ? SignUpdataobject : obj
+  );
+  let encUpdatedArray=encrypt(updatedArray,secretKey)
+  localStorage.setItem("signUpArray",JSON.stringify(encUpdatedArray))
+ 
+ 
       
     }
   }catch{
-    localStorage.setItem("signUpData",obj)
+    let encobj=encrypt(obj,secretKey)
+    localStorage.setItem("signUpData",JSON.stringify(encobj))
   }
     
 

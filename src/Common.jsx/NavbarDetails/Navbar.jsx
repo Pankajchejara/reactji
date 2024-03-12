@@ -24,7 +24,8 @@ const Navbar = (props) => {
        
        
         
-         var ACCOUNT_TYPE = (decrypt((JSON.parse(localStorage.getItem("signUpData"))),secretKey))?.accountType;
+         var signupArray= decrypt(JSON.parse(localStorage.getItem("signUpArray")),secretKey)
+          var ACCOUNT_TYPE= signupArray[signupArray.length-1]?.accountType
          
       
     }

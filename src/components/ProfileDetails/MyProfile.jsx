@@ -17,7 +17,14 @@ const MyProfile = () => {
   
 
   const navigate=useNavigate();
-  let obj=decrypt((JSON.parse ( localStorage.getItem("signUpData"))),secretKey)
+  
+ try{ let NewArray=(decrypt( (JSON.parse( localStorage.getItem("signUpArray"))),secretKey))
+
+  var obj=NewArray[NewArray.length - 1];
+  }
+  catch(error){
+   
+  }
 
 return (
   <div data-aos="fade-up">
