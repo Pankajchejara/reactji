@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import Navbar from "./Common.jsx/NavbarDetails/Navbar";
 import {Routes, Route} from 'react-router-dom';
 
@@ -7,6 +7,7 @@ import Spinner from "./components/Spinner";
 import { Suspense } from "react";
 import PrivateRoute from "./components/PrivateRoute";
 import ForgetPassword from "./components/Forms/ForgetPassword";
+
 const Login =React.lazy(()=>import('./pages/Login'))
 const Signup =React.lazy(()=>import('./pages/Signup'))
 
@@ -26,15 +27,16 @@ const ContactForm =React.lazy(()=>import( './Common.jsx/NavbarDetails/ContactFor
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  
 
 
-
-  return (
-   <div className="w-full relative min-h-screen bg-pure-greys-900 flex flex-col font-inter " >
+  return (<>
+<div className="w-full relative min-h-screen bg-pure-greys-900 flex flex-col font-inter " >
 
 <Routes>
  
 <Route path="/login" element = {<Suspense fallback={<div className="w-full h-full flex justify-center text-white items-center">Loading...<Spinner/></div>}><Login  setIsLoggedIn={setIsLoggedIn} /></Suspense>} />
+
 <Route path="/forget" element = {<Suspense fallback={<div className="w-full h-full flex justify-center text-white items-center">Loading...<Spinner/></div>}><ForgetPassword/></Suspense>} />
 <Route path="/Dictionary" element = {<Suspense fallback={<div className="w-full h-full flex justify-center text-white items-center">Loading...<Spinner/></div>}><Dictionary   /></Suspense>} />
 <Route path="/Cardgame" element = {<Suspense fallback={<div className="w-full h-full flex justify-center text-whiteitems-center">Loading...<Spinner/></div>}><Cardgame/></Suspense>} />
@@ -82,7 +84,8 @@ function App() {
 
 
 
-   </div>
+  </div>
+   </>
   );
 }
 

@@ -1,17 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import SignupForm from './SignupForm'
 import LoginForm from './LoginForm'
 import {FcGoogle} from "react-icons/fc"
 
 
+
 const Template = ({title, desc1, desc2, formtype, setIsLoggedIn}) => {
 
-    
   return (
-    <div className='flex shadow-md justify-center bg-pure-greys-900 mt-[50px]   w-11/12 max-w-[1160px] py-12 mx-auto   gap-y-0'>
+    <div className='flex  shadow-md justify-center bg-pure-greys-900 mt-[50px]   w-11/12 max-w-[1160px] py-12 mx-auto   gap-y-0'>
 
-        <div className='p-5 border shadow-md shadow-cyan-500 w-11/12 bg-pure-greys-900 max-w-[450px]' >
+        <div className='p-5 relative border shadow-md shadow-cyan-500 w-11/12 bg-pure-greys-900 max-w-[450px]' >
             <h1
             className='text-richblack-5 font-semibold text-[1.875rem] leading-[2.375rem]' 
             >
@@ -42,9 +42,13 @@ const Template = ({title, desc1, desc2, formtype, setIsLoggedIn}) => {
                 <p>Sign Up with Google</p>
             </button>
 
+
+
+
+       
+
         </div>
 
-        
     </div>
   )
 }

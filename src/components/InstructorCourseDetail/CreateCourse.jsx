@@ -23,8 +23,8 @@ const [progress, setProgress] = useState(0);
   };
   const[image,setImage]=useState('')
   const[video,setVideo]=useState('')
- 
   const[imageurl,setImageUrl]=useState('')
+  console.log("imageu",imageurl)
   const[videourl,setvideoUrl]=useState('')
   const[loading,setLoading]=useState(false)
   const navigate = useNavigate();
@@ -324,7 +324,7 @@ e.preventDefault();
 UploadVideo()
   
 }
-  
+  console.log("image url",imageurl)
 
   return (
     <>
@@ -380,7 +380,7 @@ UploadVideo()
     key={video ? URL.createObjectURL(video) : enroll.video}
    
     className='object-fill'
-    controls width="100%" height="auto"
+    controls width="100%" height="300px"
     autoPlay={isPlaying}
     onClick={togglePlay}
     style={{ cursor: 'pointer' }}

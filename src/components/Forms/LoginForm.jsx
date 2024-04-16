@@ -6,12 +6,23 @@ import toast from 'react-hot-toast'
 import { encrypt,decrypt } from 'n-krypta';
 
 const LoginForm = ({setIsLoggedIn}) => {
-    var secretKey='@@123'
+    try{
 
-
-    var SignUpArray= decrypt((JSON.parse(localStorage.getItem("signUpArray"))),secretKey)
-
-
+        var secretKey='@@123'
+    
+    
+        var SignUpArray= decrypt((JSON.parse(localStorage.getItem("signUpArray"))),secretKey)
+    }catch{
+        SignUpArray=[{ firstName:"",
+        lastName:"",
+        email:"",
+        password:"",
+        confirmPassword:"",
+        dob:"",
+        about:"",
+        gender:""}]
+    }
+  
 
 
 

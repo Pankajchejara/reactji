@@ -7,6 +7,7 @@ import { AiFillSound } from "react-icons/ai";
 import toast from 'react-hot-toast';
 
 let ErrorImage=" https://res.cloudinary.com/dqr1ihw8d/image/upload/v1709386219/eex2ojsnzhpzyf82bxjx.jpg"
+const defaultImage="https://res.cloudinary.com/dqr1ihw8d/image/upload/v1713271018/yfsyj8pbg6pjuimxpc8t.png"
 const Dictionary = () => {
 
 
@@ -14,13 +15,13 @@ const Dictionary = () => {
     
     
     const[music,setMusic]=useState("")
-    const[image,setImage]=useState("")
-    const[viewAudioIcon,setViewAudioIcon]=useState(true)
+    const[image,setImage]=useState(defaultImage)
+    const[viewAudioIcon,setViewAudioIcon]=useState(false)
  
     const[example,SetExample]=useState("")
     const[pos,setPos]=useState('')
     const[loading,setLoading]=useState(false);
-    const[inword,setInword]=useState("Apple")
+    const[inword,setInword]=useState("")
     const[defination,setDefination]=useState("Apple")
 
    
@@ -46,7 +47,7 @@ const exam=(alldata[0].meanings[0].definitions[0].example)
    setPos(pos)
    setMusic(music)
    setDefination(defination);
-  
+  setViewAudioIcon(true)
    SetExample(exam)
 }
    

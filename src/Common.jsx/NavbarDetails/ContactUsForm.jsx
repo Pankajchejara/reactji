@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom"
 const ContactUsForm = () => {
   
 const navigate=useNavigate()
+const[showSpan,setShowSpan]=useState(false)
   const[formdata,SetFormdata]=useState({
     firstname:'', lastname:'',  email:'',phonenumber:"",message:''
   })
@@ -19,12 +20,13 @@ const navigate=useNavigate()
 
   function submitContactForm(e) {
    e.preventDefault();
+   setShowSpan(true)
    if(!formdata.firstname ==''&& !formdata.lastname ==''&& !formdata.email ==''&&!formdata.phonenumber ==''&&!formdata.message ==''){
-    toast.success("Thanks for your feddback");
+    toast.success("Thanks for your feedback");
     navigate('/')
    }
    else{
-    toast.error("please fill all the field")
+    toast.error(`please fill all the field`)
    }
   }
 
@@ -46,7 +48,7 @@ const navigate=useNavigate()
             className="bg-pure-greys-700 rounded-md text-white"
              onChange={changeContactForm}
           />
-          {!formdata.firstname && (
+          {showSpan&&!formdata.firstname && (
             <span className="-mt-1 text-[12px] text-yellow-100">
               Please enter your name.
             </span>
@@ -64,7 +66,7 @@ const navigate=useNavigate()
             className="bg-pure-greys-700 rounded-md text-white"
             onChange={changeContactForm}
           />
-           {!formdata.lastname && (
+           {showSpan&&!formdata.lastname && (
             <span className="-mt-1 text-[12px] text-yellow-100">
               Please enter your name.
             </span>
@@ -84,7 +86,7 @@ const navigate=useNavigate()
           className="bg-pure-greys-700 rounded-md text-white"
           onChange={changeContactForm}
         />
-        {!formdata.email && (
+        {showSpan&&!formdata.email && (
           <span className="-mt-1 text-[12px] text-yellow-100">
             Please enter your Email address.
           </span>
@@ -110,7 +112,7 @@ const navigate=useNavigate()
             />
           
         </div>
-        {!formdata.phonenumber && (
+        {showSpan&&!formdata.phonenumber && (
           <span className="-mt-1 text-[12px] text-yellow-100">
           Please enter your phone number.
           </span>
@@ -130,7 +132,7 @@ const navigate=useNavigate()
           className="bg-pure-greys-700 rounded-md text-white"
           onChange={changeContactForm}
         />
-        {!formdata.message && (
+        {showSpan&&!formdata.message && (
           <span className="-mt-1 text-[12px] text-yellow-100">
             Please enter your Message.
           </span>

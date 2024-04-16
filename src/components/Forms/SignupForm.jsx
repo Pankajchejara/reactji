@@ -4,7 +4,7 @@ import { Appcontext } from '../../context/Appcontext';
 import { useNavigate } from 'react-router-dom';
 import { encrypt,decrypt } from 'n-krypta';
 import toast from 'react-hot-toast';
-
+import { RxCross1 } from "react-icons/rx";
 
 const SignupForm = ({setIsLoggedIn}) => {
 const secretKey='@@123'
@@ -48,7 +48,7 @@ const {signupArray,setSignUpArray}=useContext(Appcontext)
             
         }
         
-        function submitHandler(event) {
+        async function submitHandler(event) {
             event.preventDefault();
             if(formData.password !== formData.confirmPassword) {
                 
@@ -82,22 +82,39 @@ else{
     
     localStorage.setItem("signUpArray",JSON.stringify(( encryptSignupArray)))
 
- 
+ //firebasedata
+
+
+
+
+ //endfirebase data
 
   
 
    toast.success("SignUp Successful")
 navigate("/dashboard/profile");
+
+
 }
 
     }
 
+    const[show,setShow]=useState(true)
+    function closeBoxHandler(){
+        setShow(false)
+    }
 
+
+
+
+    
+      
+      
   return (
     <div>
         {/* student-Instructor tab */}
         <div
-        className='flex bg-pure-greys-700 p-1 gap-x-1 my-6 rounded-full max-w-max'>
+        className='flex relative bg-pure-greys-700 p-1 gap-x-1 my-6 rounded-full max-w-max'>
 
             <button
             className={`${accountType === "student" 
@@ -116,6 +133,15 @@ navigate("/dashboard/profile");
             onClick={() => setAccountType("instructor")}>
                 Instructor
             </button>
+            {
+      show&&  <div className='absolute  -top-[120px] left-[100px] sm:-top-[100px] sm:left-[100px]  bg-white rounded-sm '><div className=' relative text-white w-[180px] h-[110px] sm:w-[200px] sm:h-[100px] md:w-[300px] md:h-[80px]   z-10 '>
+        <p className=' md:text-2xl text-[16px] sm:text-center  font bold text-blue-800 font-bold  '> Want to Create course </p>
+        <p className=' md:text-[16px] text-[10px]text-center text-blue-700 font-italic'>Please Select Instructor button here </p>
+        <div className='absolute text-white w-[30px] h-[30px] rotate-45 -bottom-3  left-[6px] z-1 bg-white'></div>
+        <button onClick={closeBoxHandler}><RxCross1  className='text-red-100 text-xl absolute top-0 right-0'/></button>
+        </div>
+    </div>
+} 
         </div>
 
         <form onSubmit={submitHandler} >
@@ -165,7 +191,7 @@ navigate("/dashboard/profile");
             
 
             {/* createPassword and Confirm Password */}
-            <div className='w-full flex gap-x-4 mt-[20px]'>
+            <div className='w-full flex flex-col md:flex-row  gap-y-4 gap-x-4 mt-[20px]'>
                 <label className='w-full '>
                     <p className='text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]'>Create Password<sup className='text-pink-200'>*</sup></p>
                   <div className='relative'>
@@ -221,6 +247,8 @@ navigate("/dashboard/profile");
         </button>
         </form>
 
+       
+    
     </div>
   )
 }

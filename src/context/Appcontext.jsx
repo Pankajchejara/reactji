@@ -87,6 +87,7 @@ export default function Appcontextprovider ({children}) {
     const[mainDataOfCourse,setMainDataOfCourse]=useState(getlocalitems());
     const [img,setImg]=useState(null);
     const[toggle,settoggle]=useState(true)
+    const[fire,setFire]=useState('')
  
     const[enroll,setEnroll]=useState({
          title:"",about:"",image:"",id:""
@@ -99,7 +100,8 @@ export default function Appcontextprovider ({children}) {
         img,
         setImg,signupArray,setSignUpArray,
        
-        enroll,setEnroll,mainDataOfCourse,setMainDataOfCourse,editId,setEditId,toggle,settoggle,buycourse,setBuyCourse
+        enroll,setEnroll,mainDataOfCourse,setMainDataOfCourse,editId,setEditId,toggle,settoggle,buycourse,setBuyCourse,
+        fire,setFire
     }
     
   

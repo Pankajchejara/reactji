@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react'
+
 
 import AOS from 'aos'
 import 'aos/dist/aos.css'
-
+import React, {useContext,useEffect } from 'react'
 import Footer from '../Common.jsx/Footer';
-
+import { Appcontext } from '../context/Appcontext';
 import VideoSection from './HomePageSection/VideoSection';
 import TypeScriptSection from './HomePageSection/TypeScriptSection';
 import LearningSection from './HomePageSection/LearningSection';
@@ -18,7 +18,7 @@ import ExploreMore from './HomePageSection/ExploreMore';
 
 const Home = () => {
  
-  
+  const {fire}=useContext(Appcontext)
 
  
 useEffect(()=>{
@@ -86,7 +86,7 @@ useEffect(()=>{
 
 
 
-<section className='w-full bg-pure-greys-800'data-aos="fade-right">
+<section className='w-full bg-pure-greys-800 'data-aos="fade-right" >
 <LearningSection/>
 </section>
 
@@ -104,21 +104,14 @@ useEffect(()=>{
   <ReviewSlider/>
 </section>
 
-<section className='h-[200px] w-full '>
-  {
-  
-    
-  }
 
-
-
-</section>
 
 
 
 <section className='w-full h-full flex-wrap flex bg-pure-greys-700'>
 <Footer/>
 </section>
+
 
 
 
